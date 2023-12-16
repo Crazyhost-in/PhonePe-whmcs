@@ -6,7 +6,13 @@ Allows you to use Phonepe payment gateway with the WHMCS Store.
 
 ​This is the Phonepe payment gateway plugin for WHMCS. Allows Indian merchants to accept credit cards, debit cards, netbanking and wallet payments with the WHMCS store. It uses a seamless integration, allowing the customer to pay on your website without being redirected away from your WHMCS website.
 
-## Downloads: [whmcs-6 / whmcs-7 / whmcs-8][6] [whmcs-5][5]
+## Testing Information
+For testing purposes, use the following credentials:
+
+Merchant ID (Key Id): 'PGTESTPAYUAT'
+API Key (Key Secret): "099eb0cd-02cf-4e2a-8aca-3e6c6aff0399"
+
+## Downloads: [whmcs-8][6]
 
 ## Installation
 
