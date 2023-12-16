@@ -9,8 +9,8 @@ Allows you to use Phonepe payment gateway with the WHMCS Store.
 ## Testing Information
 For testing purposes, use the following credentials:
 
-Merchant ID (Key Id): 'PGTESTPAYUAT' 
-API Key (Key Secret): "099eb0cd-02cf-4e2a-8aca-3e6c6aff0399" 
+Merchant ID (Key Id): 'PGTESTPAYUAT' .
+API Key (Key Secret): "099eb0cd-02cf-4e2a-8aca-3e6c6aff0399" .
 
 
 ## Installation
