@@ -1,12 +1,9 @@
 <?php
 /**
- * WHMCS Sample Payment Gateway Module
+ * WHMCS PhonePe Payment Gateway Module
  *
  * Payment Gateway modules allow you to integrate payment solutions with the
  * WHMCS platform.
- *
- * This sample file demonstrates how a payment gateway module for WHMCS should
- * be structured and all supported functionality it can contain.
  *
  * Within the module itself, all functions must be prefixed with the module
  * filename, followed by an underscore, and then the function name. For this
@@ -125,14 +122,11 @@ function phonepepg_link($params)
     $psaltKey = $params['saltKey'];
     $testMode = $params['testMode'];
 
-
    // Invoice Parameters
     $invoiceId = $params['invoiceid'];
     $description = $params["description"];
     $amount = $params['amount'];
     $currencyCode = $params['currency'];
-
-
 
     // Client Parameters
     $firstname = $params['clientdetails']['firstname'];
@@ -153,33 +147,22 @@ function phonepepg_link($params)
     $langPayNow = $params['langpaynow'];
     $moduleDisplayName = $params['name'];
     $moduleName = $params['paymentmethod'];
-    $whmcsVersion = $params['whmcsVersion'];
+    $whmcsVersion = $params['whmcsVersion']; 
 
-    
-    if ($testMode=="on"){
-        
+    if ($testMode=="on"){        
         $payurl='https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay';
+    }    
+    else{ $payurl='https://api.phonepe.com/apis/hermes/pg/v1/pay';
     }
     
-    else{
-        
-        $payurl='https://api.phonepe.com/apis/hermes/pg/v1/pay';
-    }
-   
-   
-   
-   $icid = $params['invoiceid'] . '_' . time();
-   
+    $icid = $params['invoiceid'] . '_' . time();
+
    // Assuming $params['invoiceid'] contains the value you want to store in the cookie
 $pgphinvoiceid = $params['invoiceid'];
 
 // Set the cookie with a name, value, and optional parameters like expiration time
 setcookie('invoiceid', $pgphinvoiceid, time() + 3600, '/');
-
-   
-    
     $callback = $systemUrl . '/modules/gateways/phonepe/' . $moduleName . '.php';
-   
 
 // Setting merchant details and unique identifiers
 $merchantid= $pmerchantid;  // Unique MerchantID assigned by PhonePe
@@ -264,8 +247,6 @@ if ($response === false) {
         echo "Error: " . $decodedResponse['message'];
     }
 }
-
-
    
 }
 
@@ -280,7 +261,6 @@ if ($response === false) {
  *
  * @return array Transaction response status
  */
- 
  
  /*
  
