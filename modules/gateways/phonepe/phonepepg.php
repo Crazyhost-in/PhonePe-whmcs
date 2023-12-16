@@ -1,54 +1,38 @@
 <?php	
-
 session_start(); // Start the session
-
 include("../../../init.php");
 include("../../../includes/functions.php");
 include("../../../includes/gatewayfunctions.php");
 include("../../../includes/invoicefunctions.php");
 
-
-
 $url = $_SERVER["SERVER_NAME"];
 // Detect module name from filename.
 $gatewayModuleName = basename(__FILE__, '.php');
-
 // Fetch gateway configuration parameters.
 $gatewayParams = getGatewayVariables($gatewayModuleName);
-
 // Die if module is not active.
 if (!$gatewayParams['type']) {
     die("Module Not Activated");
 }
-
 $merchantTransactionId = $_POST['transactionId'];
-
 // Check if the transaction has already been processed
 if (isset($_SESSION['processed']) && $_SESSION['processed'] == $merchantTransactionId) {
     echo "Transaction has already been processed.";
     exit; // Exit if already processed
 }
-
-
-
 // Gateway Configuration Parameters
     $pmerchantid = $gatewayParams['merchantid'];
     $psaltKey = $gatewayParams['saltKey'];
     $testMode = $gatewayParams['testMode'];
-
-
-
 if ($testMode=="on"){
-        
+  
         $payurl='https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/status';
     }
-    
-    else{
+        else{
         
         $payurl='https://api.phonepe.com/apis/hermes/pg/v1/status';
     }
-    
-    
+        
 // Your Merchant ID and Transaction ID
 $merchantId = $pmerchantid;
 $saltKey = $psaltKey;
@@ -161,20 +145,12 @@ if ($result['success'] === true) {
         }
     }
 }
-
-
 //exit;
-
 // Retrieve data returned in payment gateway callback
 // Varies per payment gateway
-
 $invoiceId = $_COOKIE['invoiceid'];
 $transactionId = $merchantTransactionId;
 $paymentAmount = $amount;
-
-
-
-
 /**
  * Validate callback authenticity.
  *
@@ -182,8 +158,6 @@ $paymentAmount = $amount;
  * originated from them. In the case of our example here, this is achieved by
  * way of a shared secret which is used to build and compare a hash.
  */
-
-
 /**
  * Validate Callback Invoice ID.
  *
