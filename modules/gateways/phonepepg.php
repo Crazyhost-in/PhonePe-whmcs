@@ -42,7 +42,7 @@ if (!defined("WHMCS")) {
 function phonepepg_MetaData()
 {
     return array(
-        'DisplayName' => 'Sample Payment Gateway Module',
+        'DisplayName' => 'PhonePe',
         'APIVersion' => '1.1', // Use API Version 1.1
         'DisableLocalCreditCardInput' => true,
         'TokenisedStorage' => false,
@@ -76,7 +76,7 @@ function phonepepg_config()
         // defined here for backwards compatibility
         'FriendlyName' => array(
             'Type' => 'System',
-            'Value' => 'Phonepe Pg For Whmcs',
+            'Value' => 'Phonepe',
         ),
         // a text field type allows for single line text input
         'merchantid' => array(
